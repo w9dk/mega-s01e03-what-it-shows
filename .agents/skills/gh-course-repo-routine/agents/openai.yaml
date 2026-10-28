@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Course Repo Routine"
+  short_description: "Create and verify a public course repo with issues"
+  default_prompt: "Use this workflow for a MEGA.dev challenge that requires a public GitHub repository and issues."

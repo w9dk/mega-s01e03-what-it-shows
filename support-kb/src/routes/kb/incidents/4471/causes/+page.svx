@@ -1,0 +1,31 @@
+---
+layout: runbook
+title: '#4471 · two date problems in one ticket'
+owner: 'w9dk'
+status: known
+reviewed: 2026-10-28
+signature: 'w9dk'
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+Ticket #4471 has one merged queue, but tenant locale, form version, and channel separate it into two date problems. The table below deduplicates reports by ID and groups them by cause. Intake tags are only guesses, so use the tenant and form details when classifying a report.
+
+## Shared parser reads day-first dates month-first
+
+The shared parser reads every date month-first, so dates from day-first locales can flip. This cause spans app, email, and form reports.
+
+## Booking-v3 gives a month-first hint in day-first locales
+
+The booking-v3 form gives people in day-first locales an `MM/DD/YYYY` hint. They follow it, while the form reads the date in the tenant's day-first order.
+
+## Evidence from the export
+
+<CauseTable ticket={4471} />
+
+Classify each report from its tenant locale, form version, and channel. The one-day-move notes belong to the parser cause shown above.
+
+<RenderStamp {signature} />
